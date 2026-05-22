@@ -1,0 +1,226 @@
+{
+  "id": "sales-lead-follow-up",
+  "title": "Sales Lead Follow-up",
+  "domain": "sales",
+  "sourceText": "# 销售线索跟进工作流\n\n流程：线索进入 -> 线索清洗 -> 意向评分 -> 销售分配 -> 首次触达 -> 跟进记录 -> 成交或沉淀\n\n规则：\n- 企业邮箱、手机号、公司规模是必填信息。\n- 高意向线索需要 2 小时内触达。\n- AI 可以补全公司背景和推荐触达话术，但不能替销售承诺价格。",
+  "assumptions": [
+    "The input text is treated as the current source of truth.",
+    "Generated workflow specs are drafts that require business and technical review.",
+    "The V0 output designs workflow intent but does not execute downstream automations."
+  ],
+  "actors": [
+    "Business owner",
+    "Sales owner"
+  ],
+  "systems": [
+    "SOPilot canonical workflow spec"
+  ],
+  "nodes": [
+    {
+      "id": "n1",
+      "title": "线索进入",
+      "description": "Business step 1: 线索进入.",
+      "type": "task",
+      "actor": "Business owner",
+      "inputs": [
+        "source brief or business request"
+      ],
+      "outputs": [
+        "input for step 2"
+      ],
+      "tools": [],
+      "risks": [
+        "Output may be underspecified without clearer acceptance criteria"
+      ],
+      "acceptanceCriteria": [
+        "Inputs are complete enough for the next step.",
+        "Outputs are explicit, reviewable, and traceable."
+      ],
+      "missingInfo": [
+        "Expected SLA or measurable acceptance threshold"
+      ]
+    },
+    {
+      "id": "n2",
+      "title": "线索清洗",
+      "description": "Business step 2: 线索清洗.",
+      "type": "task",
+      "actor": "Business owner",
+      "inputs": [
+        "output from step 1"
+      ],
+      "outputs": [
+        "input for step 3"
+      ],
+      "tools": [],
+      "risks": [
+        "Output may be underspecified without clearer acceptance criteria"
+      ],
+      "acceptanceCriteria": [
+        "Inputs are complete enough for the next step.",
+        "Outputs are explicit, reviewable, and traceable."
+      ],
+      "missingInfo": [
+        "Expected SLA or measurable acceptance threshold"
+      ]
+    },
+    {
+      "id": "n3",
+      "title": "意向评分",
+      "description": "Business step 3: 意向评分.",
+      "type": "decision",
+      "actor": "Business owner",
+      "inputs": [
+        "output from step 2"
+      ],
+      "outputs": [
+        "input for step 4"
+      ],
+      "tools": [],
+      "risks": [
+        "Decision quality depends on incomplete context"
+      ],
+      "acceptanceCriteria": [
+        "Inputs are complete enough for the next step.",
+        "Outputs are explicit, reviewable, and traceable."
+      ],
+      "missingInfo": [
+        "Expected SLA or measurable acceptance threshold"
+      ]
+    },
+    {
+      "id": "n4",
+      "title": "销售分配",
+      "description": "Business step 4: 销售分配.",
+      "type": "task",
+      "actor": "Business owner",
+      "inputs": [
+        "output from step 3"
+      ],
+      "outputs": [
+        "input for step 5"
+      ],
+      "tools": [],
+      "risks": [
+        "Output may be underspecified without clearer acceptance criteria"
+      ],
+      "acceptanceCriteria": [
+        "Inputs are complete enough for the next step.",
+        "Outputs are explicit, reviewable, and traceable."
+      ],
+      "missingInfo": [
+        "Expected SLA or measurable acceptance threshold"
+      ]
+    },
+    {
+      "id": "n5",
+      "title": "首次触达",
+      "description": "Business step 5: 首次触达.",
+      "type": "task",
+      "actor": "Business owner",
+      "inputs": [
+        "output from step 4"
+      ],
+      "outputs": [
+        "input for step 6"
+      ],
+      "tools": [],
+      "risks": [
+        "Output may be underspecified without clearer acceptance criteria"
+      ],
+      "acceptanceCriteria": [
+        "Inputs are complete enough for the next step.",
+        "Outputs are explicit, reviewable, and traceable."
+      ],
+      "missingInfo": [
+        "Expected SLA or measurable acceptance threshold"
+      ]
+    },
+    {
+      "id": "n6",
+      "title": "跟进记录",
+      "description": "Business step 6: 跟进记录.",
+      "type": "task",
+      "actor": "Business owner",
+      "inputs": [
+        "output from step 5"
+      ],
+      "outputs": [
+        "input for step 7"
+      ],
+      "tools": [],
+      "risks": [
+        "Output may be underspecified without clearer acceptance criteria"
+      ],
+      "acceptanceCriteria": [
+        "Inputs are complete enough for the next step.",
+        "Outputs are explicit, reviewable, and traceable."
+      ],
+      "missingInfo": [
+        "Expected SLA or measurable acceptance threshold"
+      ]
+    },
+    {
+      "id": "n7",
+      "title": "成交或沉淀",
+      "description": "Business step 7: 成交或沉淀.",
+      "type": "task",
+      "actor": "Business owner",
+      "inputs": [
+        "output from step 6"
+      ],
+      "outputs": [
+        "final report or workflow outcome"
+      ],
+      "tools": [],
+      "risks": [
+        "Output may be underspecified without clearer acceptance criteria"
+      ],
+      "acceptanceCriteria": [
+        "Inputs are complete enough for the next step.",
+        "Outputs are explicit, reviewable, and traceable."
+      ],
+      "missingInfo": [
+        "Expected SLA or measurable acceptance threshold"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "from": "n1",
+      "to": "n2",
+      "label": "next"
+    },
+    {
+      "id": "e2",
+      "from": "n2",
+      "to": "n3",
+      "label": "next"
+    },
+    {
+      "id": "e3",
+      "from": "n3",
+      "to": "n4",
+      "label": "next"
+    },
+    {
+      "id": "e4",
+      "from": "n4",
+      "to": "n5",
+      "label": "next"
+    },
+    {
+      "id": "e5",
+      "from": "n5",
+      "to": "n6",
+      "label": "next"
+    },
+    {
+      "id": "e6",
+      "from": "n6",
+      "to": "n7",
+      "label": "next"
+    }
+  ]
+}

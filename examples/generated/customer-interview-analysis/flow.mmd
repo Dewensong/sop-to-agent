@@ -1,0 +1,25 @@
+flowchart TD
+  w1["上传访谈纪要\ntool | A:54 R:28"]
+  w2["清洗敏感信息\nhuman_review | A:18 R:76"]
+  w3["提取关键观点\nagent | A:78 R:28"]
+  w4["聚类痛点\nagent | A:78 R:28"]
+  w5["映射需求机会\nmanual | A:42 R:28"]
+  w6["研究员审核\nhuman_review | A:18 R:76"]
+  w7["输出洞察报告\nmanual | A:42 R:28"]
+  w1 -->|next| w2
+  w2 -->|next| w3
+  w3 -->|next| w4
+  w4 -->|next| w5
+  w5 -->|next| w6
+  w6 -->|next| w7
+  classDef agent fill:#ecfdf5,stroke:#047857,color:#064e3b
+  classDef tool fill:#eff6ff,stroke:#2563eb,color:#1e3a8a
+  classDef human fill:#fff7ed,stroke:#ea580c,color:#7c2d12
+  classDef manual fill:#f8fafc,stroke:#64748b,color:#334155
+  class w1 tool
+  class w2 human
+  class w3 agent
+  class w4 agent
+  class w5 manual
+  class w6 human
+  class w7 manual

@@ -1,0 +1,220 @@
+{
+  "id": "marketing-campaign-workflow",
+  "title": "Marketing Campaign Workflow",
+  "domain": "marketing",
+  "sourceText": "# 营销活动全流程\n\n业务目标：把一次新品营销活动从需求收集推进到复盘，并识别哪些环节可以交给 AI Agent 辅助。\n\n流程：需求收集 -> 活动策划 -> 文案生成 -> 合规与品牌审核 -> 多渠道发布 -> 数据复盘\n\n关键约束：\n- 品牌口径和活动预算必须人工确认。\n- 文案生成可以由 AI 起草，但上线前必须经过审核。\n- 发布后需要汇总渠道数据并输出复盘建议。",
+  "assumptions": [
+    "The input text is treated as the current source of truth.",
+    "Generated workflow specs are drafts that require business and technical review.",
+    "The V0 output designs workflow intent but does not execute downstream automations."
+  ],
+  "actors": [
+    "Business owner",
+    "AI agent",
+    "Automation tool",
+    "Human reviewer"
+  ],
+  "systems": [
+    "SOPilot canonical workflow spec",
+    "LLM provider",
+    "Workflow automation platform",
+    "Analytics system"
+  ],
+  "nodes": [
+    {
+      "id": "n1",
+      "title": "需求收集",
+      "description": "Business step 1: 需求收集.",
+      "type": "handoff",
+      "actor": "Automation tool",
+      "inputs": [
+        "source brief or business request"
+      ],
+      "outputs": [
+        "input for step 2"
+      ],
+      "tools": [
+        "Workflow connector",
+        "Data sync"
+      ],
+      "risks": [
+        "Output may be underspecified without clearer acceptance criteria"
+      ],
+      "acceptanceCriteria": [
+        "Inputs are complete enough for the next step.",
+        "Outputs are explicit, reviewable, and traceable."
+      ],
+      "missingInfo": [
+        "Target system and connector credentials",
+        "Expected SLA or measurable acceptance threshold"
+      ]
+    },
+    {
+      "id": "n2",
+      "title": "活动策划",
+      "description": "Business step 2: 活动策划.",
+      "type": "task",
+      "actor": "Business owner",
+      "inputs": [
+        "output from step 1"
+      ],
+      "outputs": [
+        "input for step 3"
+      ],
+      "tools": [],
+      "risks": [
+        "Output may be underspecified without clearer acceptance criteria"
+      ],
+      "acceptanceCriteria": [
+        "Inputs are complete enough for the next step.",
+        "Outputs are explicit, reviewable, and traceable."
+      ],
+      "missingInfo": [
+        "Expected SLA or measurable acceptance threshold"
+      ]
+    },
+    {
+      "id": "n3",
+      "title": "文案生成",
+      "description": "Business step 3: 文案生成.",
+      "type": "task",
+      "actor": "AI agent",
+      "inputs": [
+        "output from step 2"
+      ],
+      "outputs": [
+        "input for step 4"
+      ],
+      "tools": [
+        "LLM structured generation",
+        "Evidence extraction"
+      ],
+      "risks": [
+        "Output may be underspecified without clearer acceptance criteria"
+      ],
+      "acceptanceCriteria": [
+        "Inputs are complete enough for the next step.",
+        "Outputs are explicit, reviewable, and traceable."
+      ],
+      "missingInfo": [
+        "Expected SLA or measurable acceptance threshold"
+      ]
+    },
+    {
+      "id": "n4",
+      "title": "合规与品牌审核",
+      "description": "Business step 4: 合规与品牌审核.",
+      "type": "approval",
+      "actor": "Human reviewer",
+      "inputs": [
+        "output from step 3"
+      ],
+      "outputs": [
+        "input for step 5"
+      ],
+      "tools": [
+        "Review checklist",
+        "Approval record"
+      ],
+      "risks": [
+        "Business, legal, brand, privacy, or compliance risk"
+      ],
+      "acceptanceCriteria": [
+        "Inputs are complete enough for the next step.",
+        "Outputs are explicit, reviewable, and traceable."
+      ],
+      "missingInfo": [
+        "Reviewer role and approval SLA",
+        "Expected SLA or measurable acceptance threshold"
+      ]
+    },
+    {
+      "id": "n5",
+      "title": "多渠道发布",
+      "description": "Business step 5: 多渠道发布.",
+      "type": "notification",
+      "actor": "Automation tool",
+      "inputs": [
+        "output from step 4"
+      ],
+      "outputs": [
+        "input for step 6"
+      ],
+      "tools": [
+        "Workflow connector",
+        "Data sync"
+      ],
+      "risks": [
+        "Output may be underspecified without clearer acceptance criteria"
+      ],
+      "acceptanceCriteria": [
+        "Inputs are complete enough for the next step.",
+        "Outputs are explicit, reviewable, and traceable."
+      ],
+      "missingInfo": [
+        "Target system and connector credentials",
+        "Expected SLA or measurable acceptance threshold"
+      ]
+    },
+    {
+      "id": "n6",
+      "title": "数据复盘",
+      "description": "Business step 6: 数据复盘.",
+      "type": "data",
+      "actor": "Automation tool",
+      "inputs": [
+        "output from step 5"
+      ],
+      "outputs": [
+        "final report or workflow outcome"
+      ],
+      "tools": [
+        "Workflow connector",
+        "Data sync"
+      ],
+      "risks": [
+        "Output may be underspecified without clearer acceptance criteria"
+      ],
+      "acceptanceCriteria": [
+        "Inputs are complete enough for the next step.",
+        "Outputs are explicit, reviewable, and traceable."
+      ],
+      "missingInfo": [
+        "Target system and connector credentials",
+        "Expected SLA or measurable acceptance threshold"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "from": "n1",
+      "to": "n2",
+      "label": "next"
+    },
+    {
+      "id": "e2",
+      "from": "n2",
+      "to": "n3",
+      "label": "next"
+    },
+    {
+      "id": "e3",
+      "from": "n3",
+      "to": "n4",
+      "label": "next"
+    },
+    {
+      "id": "e4",
+      "from": "n4",
+      "to": "n5",
+      "label": "next"
+    },
+    {
+      "id": "e5",
+      "from": "n5",
+      "to": "n6",
+      "label": "next"
+    }
+  ]
+}

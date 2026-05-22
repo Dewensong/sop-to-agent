@@ -1,0 +1,237 @@
+{
+  "id": "prd-review-risk-check",
+  "title": "PRD Review Risk Check",
+  "domain": "product",
+  "sourceText": "# PRD 评审与风险检查\n\n流程：提交 PRD -> 检查目标与范围 -> 扫描技术依赖 -> 识别数据与合规风险 -> 生成追问清单 -> 组织评审 -> 记录决策和待办\n\n约束：\n- 涉及用户数据、权限和支付的改动需要额外审核。\n- AI 可以生成问题清单，但不能替代评审结论。\n- 决策必须记录原因和 owner。",
+  "assumptions": [
+    "The input text is treated as the current source of truth.",
+    "Generated workflow specs are drafts that require business and technical review.",
+    "The V0 output designs workflow intent but does not execute downstream automations."
+  ],
+  "actors": [
+    "Business owner",
+    "AI agent",
+    "Human reviewer"
+  ],
+  "systems": [
+    "SOPilot canonical workflow spec",
+    "LLM provider",
+    "Analytics system"
+  ],
+  "nodes": [
+    {
+      "id": "n1",
+      "title": "提交 PRD",
+      "description": "Business step 1: 提交 PRD.",
+      "type": "task",
+      "actor": "Business owner",
+      "inputs": [
+        "source brief or business request"
+      ],
+      "outputs": [
+        "input for step 2"
+      ],
+      "tools": [],
+      "risks": [
+        "Output may be underspecified without clearer acceptance criteria"
+      ],
+      "acceptanceCriteria": [
+        "Inputs are complete enough for the next step.",
+        "Outputs are explicit, reviewable, and traceable."
+      ],
+      "missingInfo": [
+        "Expected SLA or measurable acceptance threshold"
+      ]
+    },
+    {
+      "id": "n2",
+      "title": "检查目标与范围",
+      "description": "Business step 2: 检查目标与范围.",
+      "type": "task",
+      "actor": "Business owner",
+      "inputs": [
+        "output from step 1"
+      ],
+      "outputs": [
+        "input for step 3"
+      ],
+      "tools": [],
+      "risks": [
+        "Output may be underspecified without clearer acceptance criteria"
+      ],
+      "acceptanceCriteria": [
+        "Inputs are complete enough for the next step.",
+        "Outputs are explicit, reviewable, and traceable."
+      ],
+      "missingInfo": [
+        "Expected SLA or measurable acceptance threshold"
+      ]
+    },
+    {
+      "id": "n3",
+      "title": "扫描技术依赖",
+      "description": "Business step 3: 扫描技术依赖.",
+      "type": "task",
+      "actor": "Business owner",
+      "inputs": [
+        "output from step 2"
+      ],
+      "outputs": [
+        "input for step 4"
+      ],
+      "tools": [],
+      "risks": [
+        "Output may be underspecified without clearer acceptance criteria"
+      ],
+      "acceptanceCriteria": [
+        "Inputs are complete enough for the next step.",
+        "Outputs are explicit, reviewable, and traceable."
+      ],
+      "missingInfo": [
+        "Expected SLA or measurable acceptance threshold"
+      ]
+    },
+    {
+      "id": "n4",
+      "title": "识别数据与合规风险",
+      "description": "Business step 4: 识别数据与合规风险.",
+      "type": "approval",
+      "actor": "Human reviewer",
+      "inputs": [
+        "output from step 3"
+      ],
+      "outputs": [
+        "input for step 5"
+      ],
+      "tools": [
+        "Review checklist",
+        "Approval record"
+      ],
+      "risks": [
+        "Business, legal, brand, privacy, or compliance risk",
+        "Decision quality depends on incomplete context"
+      ],
+      "acceptanceCriteria": [
+        "Inputs are complete enough for the next step.",
+        "Outputs are explicit, reviewable, and traceable."
+      ],
+      "missingInfo": [
+        "Reviewer role and approval SLA",
+        "Expected SLA or measurable acceptance threshold"
+      ]
+    },
+    {
+      "id": "n5",
+      "title": "生成追问清单",
+      "description": "Business step 5: 生成追问清单.",
+      "type": "task",
+      "actor": "AI agent",
+      "inputs": [
+        "output from step 4"
+      ],
+      "outputs": [
+        "input for step 6"
+      ],
+      "tools": [
+        "LLM structured generation",
+        "Evidence extraction"
+      ],
+      "risks": [
+        "Output may be underspecified without clearer acceptance criteria"
+      ],
+      "acceptanceCriteria": [
+        "Inputs are complete enough for the next step.",
+        "Outputs are explicit, reviewable, and traceable."
+      ],
+      "missingInfo": [
+        "Expected SLA or measurable acceptance threshold"
+      ]
+    },
+    {
+      "id": "n6",
+      "title": "组织评审",
+      "description": "Business step 6: 组织评审.",
+      "type": "task",
+      "actor": "Business owner",
+      "inputs": [
+        "output from step 5"
+      ],
+      "outputs": [
+        "input for step 7"
+      ],
+      "tools": [],
+      "risks": [
+        "Output may be underspecified without clearer acceptance criteria"
+      ],
+      "acceptanceCriteria": [
+        "Inputs are complete enough for the next step.",
+        "Outputs are explicit, reviewable, and traceable."
+      ],
+      "missingInfo": [
+        "Expected SLA or measurable acceptance threshold"
+      ]
+    },
+    {
+      "id": "n7",
+      "title": "记录决策和待办",
+      "description": "Business step 7: 记录决策和待办.",
+      "type": "task",
+      "actor": "Business owner",
+      "inputs": [
+        "output from step 6"
+      ],
+      "outputs": [
+        "final report or workflow outcome"
+      ],
+      "tools": [],
+      "risks": [
+        "Output may be underspecified without clearer acceptance criteria"
+      ],
+      "acceptanceCriteria": [
+        "Inputs are complete enough for the next step.",
+        "Outputs are explicit, reviewable, and traceable."
+      ],
+      "missingInfo": [
+        "Expected SLA or measurable acceptance threshold"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "from": "n1",
+      "to": "n2",
+      "label": "next"
+    },
+    {
+      "id": "e2",
+      "from": "n2",
+      "to": "n3",
+      "label": "next"
+    },
+    {
+      "id": "e3",
+      "from": "n3",
+      "to": "n4",
+      "label": "next"
+    },
+    {
+      "id": "e4",
+      "from": "n4",
+      "to": "n5",
+      "label": "next"
+    },
+    {
+      "id": "e5",
+      "from": "n5",
+      "to": "n6",
+      "label": "next"
+    },
+    {
+      "id": "e6",
+      "from": "n6",
+      "to": "n7",
+      "label": "next"
+    }
+  ]
+}

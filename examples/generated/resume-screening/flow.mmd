@@ -1,0 +1,25 @@
+flowchart TD
+  w1["收集简历\ntool | A:54 R:28"]
+  w2["解析候选人信息\ntool | A:42 R:28"]
+  w3["匹配职位要求\nmanual | A:42 R:28"]
+  w4["生成面试关注点\nagent | A:78 R:28"]
+  w5["招聘负责人审核\nhuman_review | A:18 R:76"]
+  w6["安排面试\nmanual | A:42 R:28"]
+  w7["沉淀人才库\nmanual | A:42 R:28"]
+  w1 -->|next| w2
+  w2 -->|next| w3
+  w3 -->|next| w4
+  w4 -->|next| w5
+  w5 -->|next| w6
+  w6 -->|next| w7
+  classDef agent fill:#ecfdf5,stroke:#047857,color:#064e3b
+  classDef tool fill:#eff6ff,stroke:#2563eb,color:#1e3a8a
+  classDef human fill:#fff7ed,stroke:#ea580c,color:#7c2d12
+  classDef manual fill:#f8fafc,stroke:#64748b,color:#334155
+  class w1 tool
+  class w2 tool
+  class w3 manual
+  class w4 agent
+  class w5 human
+  class w6 manual
+  class w7 manual

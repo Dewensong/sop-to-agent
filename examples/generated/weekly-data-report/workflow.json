@@ -1,0 +1,504 @@
+{
+  "id": "workflow-weekly-data-report",
+  "sopId": "weekly-data-report",
+  "nodes": [
+    {
+      "id": "w1",
+      "sopNodeId": "n1",
+      "title": "拉取核心指标",
+      "mode": "tool",
+      "toolName": "Workflow connector",
+      "inputSchema": {
+        "type": "object",
+        "required": [
+          "context",
+          "inputs"
+        ],
+        "properties": {
+          "context": {
+            "type": "string"
+          },
+          "inputs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "outputSchema": {
+        "type": "object",
+        "required": [
+          "summary",
+          "evidence",
+          "next"
+        ],
+        "properties": {
+          "summary": {
+            "type": "string"
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "next": {
+            "type": "string"
+          }
+        }
+      },
+      "automationScore": 54,
+      "feasibilityScore": 82,
+      "riskScore": 28,
+      "confidence": 0.76,
+      "rationale": "This step is integration-heavy and should be mapped to deterministic workflow tools where possible.",
+      "adapterTargets": {
+        "langGraph": "draft",
+        "n8n": "ready",
+        "dify": "draft"
+      }
+    },
+    {
+      "id": "w2",
+      "sopNodeId": "n2",
+      "title": "检查数据完整性",
+      "mode": "tool",
+      "toolName": "Workflow connector",
+      "inputSchema": {
+        "type": "object",
+        "required": [
+          "context",
+          "inputs"
+        ],
+        "properties": {
+          "context": {
+            "type": "string"
+          },
+          "inputs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "outputSchema": {
+        "type": "object",
+        "required": [
+          "summary",
+          "evidence",
+          "next"
+        ],
+        "properties": {
+          "summary": {
+            "type": "string"
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "next": {
+            "type": "string"
+          }
+        }
+      },
+      "automationScore": 42,
+      "feasibilityScore": 58,
+      "riskScore": 28,
+      "confidence": 0.58,
+      "rationale": "This step is integration-heavy and should be mapped to deterministic workflow tools where possible.",
+      "adapterTargets": {
+        "langGraph": "draft",
+        "n8n": "ready",
+        "dify": "draft"
+      }
+    },
+    {
+      "id": "w3",
+      "sopNodeId": "n3",
+      "title": "发现异常波动",
+      "mode": "manual",
+      "inputSchema": {
+        "type": "object",
+        "required": [
+          "context",
+          "inputs"
+        ],
+        "properties": {
+          "context": {
+            "type": "string"
+          },
+          "inputs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "outputSchema": {
+        "type": "object",
+        "required": [
+          "summary",
+          "evidence",
+          "next"
+        ],
+        "properties": {
+          "summary": {
+            "type": "string"
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "next": {
+            "type": "string"
+          }
+        }
+      },
+      "automationScore": 42,
+      "feasibilityScore": 58,
+      "riskScore": 28,
+      "confidence": 0.58,
+      "rationale": "This step needs clearer structure before automation should be attempted.",
+      "adapterTargets": {
+        "langGraph": "manual",
+        "n8n": "manual",
+        "dify": "manual"
+      }
+    },
+    {
+      "id": "w4",
+      "sopNodeId": "n4",
+      "title": "解释可能原因",
+      "mode": "agent",
+      "prompt": "Given the business context and required outputs, complete \"解释可能原因\" with evidence, assumptions, and next-step recommendations.",
+      "inputSchema": {
+        "type": "object",
+        "required": [
+          "context",
+          "inputs"
+        ],
+        "properties": {
+          "context": {
+            "type": "string"
+          },
+          "inputs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "outputSchema": {
+        "type": "object",
+        "required": [
+          "summary",
+          "evidence",
+          "next"
+        ],
+        "properties": {
+          "summary": {
+            "type": "string"
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "next": {
+            "type": "string"
+          }
+        }
+      },
+      "automationScore": 78,
+      "feasibilityScore": 72,
+      "riskScore": 28,
+      "confidence": 0.76,
+      "rationale": "This step is language-heavy or reasoning-heavy and is a strong fit for an AI drafting or analysis agent.",
+      "adapterTargets": {
+        "langGraph": "ready",
+        "n8n": "draft",
+        "dify": "ready"
+      }
+    },
+    {
+      "id": "w5",
+      "sopNodeId": "n5",
+      "title": "生成周报草稿",
+      "mode": "agent",
+      "prompt": "Given the business context and required outputs, complete \"生成周报草稿\" with evidence, assumptions, and next-step recommendations.",
+      "inputSchema": {
+        "type": "object",
+        "required": [
+          "context",
+          "inputs"
+        ],
+        "properties": {
+          "context": {
+            "type": "string"
+          },
+          "inputs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "outputSchema": {
+        "type": "object",
+        "required": [
+          "summary",
+          "evidence",
+          "next"
+        ],
+        "properties": {
+          "summary": {
+            "type": "string"
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "next": {
+            "type": "string"
+          }
+        }
+      },
+      "automationScore": 78,
+      "feasibilityScore": 72,
+      "riskScore": 28,
+      "confidence": 0.76,
+      "rationale": "This step is language-heavy or reasoning-heavy and is a strong fit for an AI drafting or analysis agent.",
+      "adapterTargets": {
+        "langGraph": "ready",
+        "n8n": "draft",
+        "dify": "ready"
+      }
+    },
+    {
+      "id": "w6",
+      "sopNodeId": "n6",
+      "title": "业务负责人审核",
+      "mode": "human_review",
+      "inputSchema": {
+        "type": "object",
+        "required": [
+          "context",
+          "inputs"
+        ],
+        "properties": {
+          "context": {
+            "type": "string"
+          },
+          "inputs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "outputSchema": {
+        "type": "object",
+        "required": [
+          "summary",
+          "evidence",
+          "next"
+        ],
+        "properties": {
+          "summary": {
+            "type": "string"
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "next": {
+            "type": "string"
+          }
+        }
+      },
+      "automationScore": 18,
+      "feasibilityScore": 50,
+      "riskScore": 76,
+      "confidence": 0.52,
+      "rationale": "This step affects business risk or external commitments, so AI should assist but not auto-approve.",
+      "adapterTargets": {
+        "langGraph": "draft",
+        "n8n": "draft",
+        "dify": "manual"
+      }
+    },
+    {
+      "id": "w7",
+      "sopNodeId": "n7",
+      "title": "发送报告",
+      "mode": "tool",
+      "toolName": "Workflow connector",
+      "inputSchema": {
+        "type": "object",
+        "required": [
+          "context",
+          "inputs"
+        ],
+        "properties": {
+          "context": {
+            "type": "string"
+          },
+          "inputs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "outputSchema": {
+        "type": "object",
+        "required": [
+          "summary",
+          "evidence",
+          "next"
+        ],
+        "properties": {
+          "summary": {
+            "type": "string"
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "next": {
+            "type": "string"
+          }
+        }
+      },
+      "automationScore": 54,
+      "feasibilityScore": 82,
+      "riskScore": 28,
+      "confidence": 0.76,
+      "rationale": "This step is integration-heavy and should be mapped to deterministic workflow tools where possible.",
+      "adapterTargets": {
+        "langGraph": "draft",
+        "n8n": "ready",
+        "dify": "draft"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "from": "n1",
+      "to": "n2",
+      "label": "next"
+    },
+    {
+      "id": "e2",
+      "from": "n2",
+      "to": "n3",
+      "label": "next"
+    },
+    {
+      "id": "e3",
+      "from": "n3",
+      "to": "n4",
+      "label": "next"
+    },
+    {
+      "id": "e4",
+      "from": "n4",
+      "to": "n5",
+      "label": "next"
+    },
+    {
+      "id": "e5",
+      "from": "n5",
+      "to": "n6",
+      "label": "next"
+    },
+    {
+      "id": "e6",
+      "from": "n6",
+      "to": "n7",
+      "label": "next"
+    }
+  ],
+  "humanGates": [
+    {
+      "id": "gate-w6",
+      "nodeId": "w6",
+      "title": "业务负责人审核 review gate",
+      "reason": "High-risk business decision requires review.",
+      "reviewer": "Business owner or domain reviewer",
+      "requiredInputs": [
+        "draft output",
+        "source evidence",
+        "risk notes"
+      ]
+    }
+  ],
+  "tools": [
+    {
+      "id": "workflow-connectors",
+      "name": "Workflow automation connectors",
+      "purpose": "Fetch, sync, publish, notify, or route structured outputs across existing tools.",
+      "targetNodes": [
+        "w1",
+        "w2",
+        "w7"
+      ]
+    }
+  ],
+  "agents": [
+    {
+      "id": "analysis-agent",
+      "name": "Process analysis agent",
+      "responsibility": "Generate structured drafts, extract evidence, identify risks, and recommend next actions.",
+      "assignedNodeIds": [
+        "w4",
+        "w5"
+      ]
+    }
+  ],
+  "metrics": [
+    {
+      "id": "cycle-time",
+      "name": "Cycle time reduction",
+      "description": "Compare time from intake to final approved output before and after automation.",
+      "source": "workflow timestamps"
+    },
+    {
+      "id": "review-pass-rate",
+      "name": "Review pass rate",
+      "description": "Track how often AI-assisted outputs pass human review without major rework.",
+      "source": "review records"
+    },
+    {
+      "id": "automation-coverage",
+      "name": "Automation coverage",
+      "description": "Share of steps designed as agent or tool nodes.",
+      "source": "workflow spec"
+    }
+  ],
+  "exportTargets": [
+    "markdown",
+    "json",
+    "mermaid",
+    "langgraph_draft"
+  ]
+}

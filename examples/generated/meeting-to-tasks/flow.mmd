@@ -1,0 +1,25 @@
+flowchart TD
+  w1["导入会议纪要\ntool | A:54 R:28"]
+  w2["提取决议\nagent | A:78 R:28"]
+  w3["识别行动项\nagent | A:78 R:48"]
+  w4["分配负责人\nmanual | A:42 R:28"]
+  w5["确认截止时间\nmanual | A:42 R:48"]
+  w6["同步到任务系统\ntool | A:54 R:28"]
+  w7["周期性提醒\ntool | A:54 R:28"]
+  w1 -->|next| w2
+  w2 -->|next| w3
+  w3 -->|next| w4
+  w4 -->|next| w5
+  w5 -->|next| w6
+  w6 -->|next| w7
+  classDef agent fill:#ecfdf5,stroke:#047857,color:#064e3b
+  classDef tool fill:#eff6ff,stroke:#2563eb,color:#1e3a8a
+  classDef human fill:#fff7ed,stroke:#ea580c,color:#7c2d12
+  classDef manual fill:#f8fafc,stroke:#64748b,color:#334155
+  class w1 tool
+  class w2 agent
+  class w3 agent
+  class w4 manual
+  class w5 manual
+  class w6 tool
+  class w7 tool

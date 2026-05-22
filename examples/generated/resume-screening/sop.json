@@ -1,0 +1,245 @@
+{
+  "id": "recruiting-resume-screening",
+  "title": "Recruiting Resume Screening",
+  "domain": "recruiting",
+  "sourceText": "# 招聘简历筛选\n\n流程：收集简历 -> 解析候选人信息 -> 匹配职位要求 -> 生成面试关注点 -> 招聘负责人审核 -> 安排面试 -> 沉淀人才库\n\n约束：\n- 不允许基于年龄、性别、婚育等敏感信息筛选。\n- AI 只能给出辅助评分和证据，不做最终淘汰决定。\n- 推荐面试问题要对应岗位能力。",
+  "assumptions": [
+    "The input text is treated as the current source of truth.",
+    "Generated workflow specs are drafts that require business and technical review.",
+    "The V0 output designs workflow intent but does not execute downstream automations."
+  ],
+  "actors": [
+    "Business owner",
+    "AI agent",
+    "Automation tool",
+    "Human reviewer"
+  ],
+  "systems": [
+    "SOPilot canonical workflow spec",
+    "LLM provider",
+    "Workflow automation platform"
+  ],
+  "nodes": [
+    {
+      "id": "n1",
+      "title": "收集简历",
+      "description": "Business step 1: 收集简历.",
+      "type": "data",
+      "actor": "Automation tool",
+      "inputs": [
+        "source brief or business request"
+      ],
+      "outputs": [
+        "input for step 2"
+      ],
+      "tools": [
+        "Workflow connector",
+        "Data sync"
+      ],
+      "risks": [
+        "Output may be underspecified without clearer acceptance criteria"
+      ],
+      "acceptanceCriteria": [
+        "Inputs are complete enough for the next step.",
+        "Outputs are explicit, reviewable, and traceable."
+      ],
+      "missingInfo": [
+        "Target system and connector credentials",
+        "Expected SLA or measurable acceptance threshold"
+      ]
+    },
+    {
+      "id": "n2",
+      "title": "解析候选人信息",
+      "description": "Business step 2: 解析候选人信息.",
+      "type": "data",
+      "actor": "Automation tool",
+      "inputs": [
+        "output from step 1"
+      ],
+      "outputs": [
+        "input for step 3"
+      ],
+      "tools": [
+        "Workflow connector",
+        "Data sync"
+      ],
+      "risks": [
+        "Output may be underspecified without clearer acceptance criteria"
+      ],
+      "acceptanceCriteria": [
+        "Inputs are complete enough for the next step.",
+        "Outputs are explicit, reviewable, and traceable."
+      ],
+      "missingInfo": [
+        "Target system and connector credentials",
+        "Expected SLA or measurable acceptance threshold"
+      ]
+    },
+    {
+      "id": "n3",
+      "title": "匹配职位要求",
+      "description": "Business step 3: 匹配职位要求.",
+      "type": "task",
+      "actor": "Business owner",
+      "inputs": [
+        "output from step 2"
+      ],
+      "outputs": [
+        "input for step 4"
+      ],
+      "tools": [],
+      "risks": [
+        "Output may be underspecified without clearer acceptance criteria"
+      ],
+      "acceptanceCriteria": [
+        "Inputs are complete enough for the next step.",
+        "Outputs are explicit, reviewable, and traceable."
+      ],
+      "missingInfo": [
+        "Expected SLA or measurable acceptance threshold"
+      ]
+    },
+    {
+      "id": "n4",
+      "title": "生成面试关注点",
+      "description": "Business step 4: 生成面试关注点.",
+      "type": "task",
+      "actor": "AI agent",
+      "inputs": [
+        "output from step 3"
+      ],
+      "outputs": [
+        "input for step 5"
+      ],
+      "tools": [
+        "LLM structured generation",
+        "Evidence extraction"
+      ],
+      "risks": [
+        "Output may be underspecified without clearer acceptance criteria"
+      ],
+      "acceptanceCriteria": [
+        "Inputs are complete enough for the next step.",
+        "Outputs are explicit, reviewable, and traceable."
+      ],
+      "missingInfo": [
+        "Expected SLA or measurable acceptance threshold"
+      ]
+    },
+    {
+      "id": "n5",
+      "title": "招聘负责人审核",
+      "description": "Business step 5: 招聘负责人审核.",
+      "type": "approval",
+      "actor": "Human reviewer",
+      "inputs": [
+        "output from step 4"
+      ],
+      "outputs": [
+        "input for step 6"
+      ],
+      "tools": [
+        "Review checklist",
+        "Approval record"
+      ],
+      "risks": [
+        "Business, legal, brand, privacy, or compliance risk"
+      ],
+      "acceptanceCriteria": [
+        "Inputs are complete enough for the next step.",
+        "Outputs are explicit, reviewable, and traceable."
+      ],
+      "missingInfo": [
+        "Reviewer role and approval SLA",
+        "Expected SLA or measurable acceptance threshold"
+      ]
+    },
+    {
+      "id": "n6",
+      "title": "安排面试",
+      "description": "Business step 6: 安排面试.",
+      "type": "task",
+      "actor": "Business owner",
+      "inputs": [
+        "output from step 5"
+      ],
+      "outputs": [
+        "input for step 7"
+      ],
+      "tools": [],
+      "risks": [
+        "Output may be underspecified without clearer acceptance criteria"
+      ],
+      "acceptanceCriteria": [
+        "Inputs are complete enough for the next step.",
+        "Outputs are explicit, reviewable, and traceable."
+      ],
+      "missingInfo": [
+        "Expected SLA or measurable acceptance threshold"
+      ]
+    },
+    {
+      "id": "n7",
+      "title": "沉淀人才库",
+      "description": "Business step 7: 沉淀人才库.",
+      "type": "task",
+      "actor": "Business owner",
+      "inputs": [
+        "output from step 6"
+      ],
+      "outputs": [
+        "final report or workflow outcome"
+      ],
+      "tools": [],
+      "risks": [
+        "Output may be underspecified without clearer acceptance criteria"
+      ],
+      "acceptanceCriteria": [
+        "Inputs are complete enough for the next step.",
+        "Outputs are explicit, reviewable, and traceable."
+      ],
+      "missingInfo": [
+        "Expected SLA or measurable acceptance threshold"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "from": "n1",
+      "to": "n2",
+      "label": "next"
+    },
+    {
+      "id": "e2",
+      "from": "n2",
+      "to": "n3",
+      "label": "next"
+    },
+    {
+      "id": "e3",
+      "from": "n3",
+      "to": "n4",
+      "label": "next"
+    },
+    {
+      "id": "e4",
+      "from": "n4",
+      "to": "n5",
+      "label": "next"
+    },
+    {
+      "id": "e5",
+      "from": "n5",
+      "to": "n6",
+      "label": "next"
+    },
+    {
+      "id": "e6",
+      "from": "n6",
+      "to": "n7",
+      "label": "next"
+    }
+  ]
+}

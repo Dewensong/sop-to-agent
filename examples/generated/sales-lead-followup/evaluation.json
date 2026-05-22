@@ -1,0 +1,17 @@
+{
+  "coverageScore": 93,
+  "ambiguityScore": 63,
+  "automationPotential": 0,
+  "humanReviewCoverage": 42,
+  "riskLevel": "low",
+  "warnings": [
+    "No human review gate was detected; validate risk and approval requirements.",
+    "Some nodes have medium confidence and should be clarified before implementation.",
+    "Adapter exports are draft-oriented in V0 and should be reviewed before importing into n8n, Dify, or LangGraph."
+  ],
+  "recommendedNextQuestions": [
+    "Which systems hold the input data for each step?",
+    "Who owns the final approval for high-risk outputs?",
+    "What metric proves that this workflow improved the business process?"
+  ]
+}

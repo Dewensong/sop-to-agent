@@ -7,6 +7,8 @@ __pycache__/
 # env / secrets
 .env
 .env.*
+.env.local
+.env.*.local
 *.key
 *.pem
 
@@ -19,6 +21,7 @@ tmp/
 temp/
 .cache/
 *.log
+*.tsbuildinfo
 
 # large or noisy generated assets
 artifacts/raw/
@@ -26,6 +29,11 @@ artifacts/temp/
 artifacts/cache/
 
 # build outputs
+.next/
 dist/
 build/
 out/
+coverage/
+playwright-report/
+test-results/
+output/

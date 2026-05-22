@@ -1,0 +1,248 @@
+{
+  "id": "meeting-notes-to-tasks",
+  "title": "Meeting Notes to Tasks",
+  "domain": "operations",
+  "sourceText": "# 会议纪要转任务\n\n流程：导入会议纪要 -> 提取决议 -> 识别行动项 -> 分配负责人 -> 确认截止时间 -> 同步到任务系统 -> 周期性提醒\n\n约束：\n- 没有负责人或截止时间的行动项需要人工补齐。\n- 任务同步前需要会议主持人确认。\n- 提醒频率不能超过团队默认规则。",
+  "assumptions": [
+    "The input text is treated as the current source of truth.",
+    "Generated workflow specs are drafts that require business and technical review.",
+    "The V0 output designs workflow intent but does not execute downstream automations."
+  ],
+  "actors": [
+    "Business owner",
+    "AI agent",
+    "Automation tool"
+  ],
+  "systems": [
+    "SOPilot canonical workflow spec",
+    "LLM provider",
+    "Workflow automation platform",
+    "Task management system"
+  ],
+  "nodes": [
+    {
+      "id": "n1",
+      "title": "导入会议纪要",
+      "description": "Business step 1: 导入会议纪要.",
+      "type": "data",
+      "actor": "Automation tool",
+      "inputs": [
+        "source brief or business request"
+      ],
+      "outputs": [
+        "input for step 2"
+      ],
+      "tools": [
+        "Workflow connector",
+        "Data sync"
+      ],
+      "risks": [
+        "Output may be underspecified without clearer acceptance criteria"
+      ],
+      "acceptanceCriteria": [
+        "Inputs are complete enough for the next step.",
+        "Outputs are explicit, reviewable, and traceable."
+      ],
+      "missingInfo": [
+        "Target system and connector credentials",
+        "Expected SLA or measurable acceptance threshold"
+      ]
+    },
+    {
+      "id": "n2",
+      "title": "提取决议",
+      "description": "Business step 2: 提取决议.",
+      "type": "task",
+      "actor": "AI agent",
+      "inputs": [
+        "output from step 1"
+      ],
+      "outputs": [
+        "input for step 3"
+      ],
+      "tools": [
+        "LLM structured generation",
+        "Evidence extraction"
+      ],
+      "risks": [
+        "Output may be underspecified without clearer acceptance criteria"
+      ],
+      "acceptanceCriteria": [
+        "Inputs are complete enough for the next step.",
+        "Outputs are explicit, reviewable, and traceable."
+      ],
+      "missingInfo": [
+        "Expected SLA or measurable acceptance threshold"
+      ]
+    },
+    {
+      "id": "n3",
+      "title": "识别行动项",
+      "description": "Business step 3: 识别行动项.",
+      "type": "decision",
+      "actor": "AI agent",
+      "inputs": [
+        "output from step 2"
+      ],
+      "outputs": [
+        "input for step 4"
+      ],
+      "tools": [
+        "LLM structured generation",
+        "Evidence extraction"
+      ],
+      "risks": [
+        "Decision quality depends on incomplete context"
+      ],
+      "acceptanceCriteria": [
+        "Inputs are complete enough for the next step.",
+        "Outputs are explicit, reviewable, and traceable."
+      ],
+      "missingInfo": [
+        "Expected SLA or measurable acceptance threshold"
+      ]
+    },
+    {
+      "id": "n4",
+      "title": "分配负责人",
+      "description": "Business step 4: 分配负责人.",
+      "type": "task",
+      "actor": "Business owner",
+      "inputs": [
+        "output from step 3"
+      ],
+      "outputs": [
+        "input for step 5"
+      ],
+      "tools": [],
+      "risks": [
+        "Output may be underspecified without clearer acceptance criteria"
+      ],
+      "acceptanceCriteria": [
+        "Inputs are complete enough for the next step.",
+        "Outputs are explicit, reviewable, and traceable."
+      ],
+      "missingInfo": [
+        "Expected SLA or measurable acceptance threshold"
+      ]
+    },
+    {
+      "id": "n5",
+      "title": "确认截止时间",
+      "description": "Business step 5: 确认截止时间.",
+      "type": "decision",
+      "actor": "Business owner",
+      "inputs": [
+        "output from step 4"
+      ],
+      "outputs": [
+        "input for step 6"
+      ],
+      "tools": [],
+      "risks": [
+        "Decision quality depends on incomplete context"
+      ],
+      "acceptanceCriteria": [
+        "Inputs are complete enough for the next step.",
+        "Outputs are explicit, reviewable, and traceable."
+      ],
+      "missingInfo": [
+        "Expected SLA or measurable acceptance threshold"
+      ]
+    },
+    {
+      "id": "n6",
+      "title": "同步到任务系统",
+      "description": "Business step 6: 同步到任务系统.",
+      "type": "notification",
+      "actor": "Automation tool",
+      "inputs": [
+        "output from step 5"
+      ],
+      "outputs": [
+        "input for step 7"
+      ],
+      "tools": [
+        "Workflow connector",
+        "Data sync"
+      ],
+      "risks": [
+        "Output may be underspecified without clearer acceptance criteria"
+      ],
+      "acceptanceCriteria": [
+        "Inputs are complete enough for the next step.",
+        "Outputs are explicit, reviewable, and traceable."
+      ],
+      "missingInfo": [
+        "Target system and connector credentials",
+        "Expected SLA or measurable acceptance threshold"
+      ]
+    },
+    {
+      "id": "n7",
+      "title": "周期性提醒",
+      "description": "Business step 7: 周期性提醒.",
+      "type": "notification",
+      "actor": "Automation tool",
+      "inputs": [
+        "output from step 6"
+      ],
+      "outputs": [
+        "final report or workflow outcome"
+      ],
+      "tools": [
+        "Workflow connector",
+        "Data sync"
+      ],
+      "risks": [
+        "Output may be underspecified without clearer acceptance criteria"
+      ],
+      "acceptanceCriteria": [
+        "Inputs are complete enough for the next step.",
+        "Outputs are explicit, reviewable, and traceable."
+      ],
+      "missingInfo": [
+        "Target system and connector credentials",
+        "Expected SLA or measurable acceptance threshold"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "from": "n1",
+      "to": "n2",
+      "label": "next"
+    },
+    {
+      "id": "e2",
+      "from": "n2",
+      "to": "n3",
+      "label": "next"
+    },
+    {
+      "id": "e3",
+      "from": "n3",
+      "to": "n4",
+      "label": "next"
+    },
+    {
+      "id": "e4",
+      "from": "n4",
+      "to": "n5",
+      "label": "next"
+    },
+    {
+      "id": "e5",
+      "from": "n5",
+      "to": "n6",
+      "label": "next"
+    },
+    {
+      "id": "e6",
+      "from": "n6",
+      "to": "n7",
+      "label": "next"
+    }
+  ]
+}

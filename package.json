@@ -1,0 +1,23 @@
+{
+  "name": "sopilot",
+  "version": "0.1.0",
+  "private": true,
+  "description": "SOPilot turns messy business SOPs into structured AI agent workflow specs.",
+  "packageManager": "pnpm@10.33.2",
+  "scripts": {
+    "dev": "pnpm --filter @sopilot/core build && pnpm --filter @sopilot/web dev",
+    "build": "pnpm --filter @sopilot/core build && pnpm --filter @sopilot/cli build && pnpm --filter @sopilot/web build",
+    "lint": "pnpm --filter @sopilot/core build && pnpm --filter @sopilot/core lint && pnpm --filter @sopilot/cli lint && pnpm --filter @sopilot/web lint",
+    "typecheck": "pnpm --filter @sopilot/core build && pnpm --filter @sopilot/core typecheck && pnpm --filter @sopilot/cli typecheck && pnpm --filter @sopilot/web typecheck",
+    "test": "pnpm --filter @sopilot/core test",
+    "schema": "pnpm --filter @sopilot/core schema",
+    "generate:examples": "pnpm --filter @sopilot/core build && tsx packages/cli/src/index.ts generate-all --out examples/generated",
+    "sopilot": "pnpm --filter @sopilot/core build && tsx packages/cli/src/index.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.5",
+    "playwright": "^1.60.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  }
+}

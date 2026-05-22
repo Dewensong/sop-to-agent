@@ -1,0 +1,252 @@
+{
+  "id": "support-ticket-triage",
+  "title": "Support Ticket Triage",
+  "domain": "support",
+  "sourceText": "# 客服工单分流\n\n流程：接收工单 -> 判断问题类型 -> 识别紧急程度 -> 推荐回复草稿 -> 自动回复低风险问题 -> 升级复杂问题 -> 汇总问题趋势\n\n注意：\n- 涉及退款、合规和安全问题必须人工处理。\n- AI 回复需要引用知识库条目。\n- 高优先级工单需要 30 分钟内升级。",
+  "assumptions": [
+    "The input text is treated as the current source of truth.",
+    "Generated workflow specs are drafts that require business and technical review.",
+    "The V0 output designs workflow intent but does not execute downstream automations."
+  ],
+  "actors": [
+    "Business owner",
+    "AI agent",
+    "Automation tool",
+    "Human reviewer",
+    "Support owner"
+  ],
+  "systems": [
+    "SOPilot canonical workflow spec",
+    "LLM provider",
+    "Workflow automation platform"
+  ],
+  "nodes": [
+    {
+      "id": "n1",
+      "title": "接收工单",
+      "description": "Business step 1: 接收工单.",
+      "type": "handoff",
+      "actor": "Automation tool",
+      "inputs": [
+        "source brief or business request"
+      ],
+      "outputs": [
+        "input for step 2"
+      ],
+      "tools": [
+        "Workflow connector",
+        "Data sync"
+      ],
+      "risks": [
+        "Output may be underspecified without clearer acceptance criteria"
+      ],
+      "acceptanceCriteria": [
+        "Inputs are complete enough for the next step.",
+        "Outputs are explicit, reviewable, and traceable."
+      ],
+      "missingInfo": [
+        "Target system and connector credentials",
+        "Expected SLA or measurable acceptance threshold"
+      ]
+    },
+    {
+      "id": "n2",
+      "title": "判断问题类型",
+      "description": "Business step 2: 判断问题类型.",
+      "type": "decision",
+      "actor": "Business owner",
+      "inputs": [
+        "output from step 1"
+      ],
+      "outputs": [
+        "input for step 3"
+      ],
+      "tools": [],
+      "risks": [
+        "Decision quality depends on incomplete context"
+      ],
+      "acceptanceCriteria": [
+        "Inputs are complete enough for the next step.",
+        "Outputs are explicit, reviewable, and traceable."
+      ],
+      "missingInfo": [
+        "Expected SLA or measurable acceptance threshold"
+      ]
+    },
+    {
+      "id": "n3",
+      "title": "识别紧急程度",
+      "description": "Business step 3: 识别紧急程度.",
+      "type": "decision",
+      "actor": "AI agent",
+      "inputs": [
+        "output from step 2"
+      ],
+      "outputs": [
+        "input for step 4"
+      ],
+      "tools": [
+        "LLM structured generation",
+        "Evidence extraction"
+      ],
+      "risks": [
+        "Decision quality depends on incomplete context"
+      ],
+      "acceptanceCriteria": [
+        "Inputs are complete enough for the next step.",
+        "Outputs are explicit, reviewable, and traceable."
+      ],
+      "missingInfo": [
+        "Expected SLA or measurable acceptance threshold"
+      ]
+    },
+    {
+      "id": "n4",
+      "title": "推荐回复草稿",
+      "description": "Business step 4: 推荐回复草稿.",
+      "type": "handoff",
+      "actor": "AI agent",
+      "inputs": [
+        "output from step 3"
+      ],
+      "outputs": [
+        "input for step 5"
+      ],
+      "tools": [
+        "LLM structured generation",
+        "Evidence extraction"
+      ],
+      "risks": [
+        "Output may be underspecified without clearer acceptance criteria"
+      ],
+      "acceptanceCriteria": [
+        "Inputs are complete enough for the next step.",
+        "Outputs are explicit, reviewable, and traceable."
+      ],
+      "missingInfo": [
+        "Expected SLA or measurable acceptance threshold"
+      ]
+    },
+    {
+      "id": "n5",
+      "title": "自动回复低风险问题",
+      "description": "Business step 5: 自动回复低风险问题.",
+      "type": "handoff",
+      "actor": "Automation tool",
+      "inputs": [
+        "output from step 4"
+      ],
+      "outputs": [
+        "input for step 6"
+      ],
+      "tools": [
+        "Workflow connector",
+        "Data sync"
+      ],
+      "risks": [
+        "Output may be underspecified without clearer acceptance criteria"
+      ],
+      "acceptanceCriteria": [
+        "Inputs are complete enough for the next step.",
+        "Outputs are explicit, reviewable, and traceable."
+      ],
+      "missingInfo": [
+        "Target system and connector credentials",
+        "Expected SLA or measurable acceptance threshold"
+      ]
+    },
+    {
+      "id": "n6",
+      "title": "升级复杂问题",
+      "description": "Business step 6: 升级复杂问题.",
+      "type": "approval",
+      "actor": "Human reviewer",
+      "inputs": [
+        "output from step 5"
+      ],
+      "outputs": [
+        "input for step 7"
+      ],
+      "tools": [
+        "Review checklist",
+        "Approval record"
+      ],
+      "risks": [
+        "Business, legal, brand, privacy, or compliance risk"
+      ],
+      "acceptanceCriteria": [
+        "Inputs are complete enough for the next step.",
+        "Outputs are explicit, reviewable, and traceable."
+      ],
+      "missingInfo": [
+        "Reviewer role and approval SLA",
+        "Expected SLA or measurable acceptance threshold"
+      ]
+    },
+    {
+      "id": "n7",
+      "title": "汇总问题趋势",
+      "description": "Business step 7: 汇总问题趋势.",
+      "type": "task",
+      "actor": "AI agent",
+      "inputs": [
+        "output from step 6"
+      ],
+      "outputs": [
+        "final report or workflow outcome"
+      ],
+      "tools": [
+        "LLM structured generation",
+        "Evidence extraction"
+      ],
+      "risks": [
+        "Output may be underspecified without clearer acceptance criteria"
+      ],
+      "acceptanceCriteria": [
+        "Inputs are complete enough for the next step.",
+        "Outputs are explicit, reviewable, and traceable."
+      ],
+      "missingInfo": [
+        "Expected SLA or measurable acceptance threshold"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "from": "n1",
+      "to": "n2",
+      "label": "next"
+    },
+    {
+      "id": "e2",
+      "from": "n2",
+      "to": "n3",
+      "label": "next"
+    },
+    {
+      "id": "e3",
+      "from": "n3",
+      "to": "n4",
+      "label": "next"
+    },
+    {
+      "id": "e4",
+      "from": "n4",
+      "to": "n5",
+      "label": "next"
+    },
+    {
+      "id": "e5",
+      "from": "n5",
+      "to": "n6",
+      "label": "next"
+    },
+    {
+      "id": "e6",
+      "from": "n6",
+      "to": "n7",
+      "label": "next"
+    }
+  ]
+}

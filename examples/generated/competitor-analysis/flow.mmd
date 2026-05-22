@@ -1,0 +1,25 @@
+flowchart TD
+  w1["确定竞品名单\nmanual | A:42 R:28"]
+  w2["收集官网和公开资料\ntool | A:54 R:28"]
+  w3["提取功能与定价\nagent | A:78 R:28"]
+  w4["对比差异\nmanual | A:42 R:28"]
+  w5["标注风险与机会\nmanual | A:42 R:28"]
+  w6["PM 审核\nhuman_review | A:18 R:76"]
+  w7["输出竞品报告\nmanual | A:42 R:28"]
+  w1 -->|next| w2
+  w2 -->|next| w3
+  w3 -->|next| w4
+  w4 -->|next| w5
+  w5 -->|next| w6
+  w6 -->|next| w7
+  classDef agent fill:#ecfdf5,stroke:#047857,color:#064e3b
+  classDef tool fill:#eff6ff,stroke:#2563eb,color:#1e3a8a
+  classDef human fill:#fff7ed,stroke:#ea580c,color:#7c2d12
+  classDef manual fill:#f8fafc,stroke:#64748b,color:#334155
+  class w1 manual
+  class w2 tool
+  class w3 agent
+  class w4 manual
+  class w5 manual
+  class w6 human
+  class w7 manual

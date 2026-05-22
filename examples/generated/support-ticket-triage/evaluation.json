@@ -1,0 +1,16 @@
+{
+  "coverageScore": 93,
+  "ambiguityScore": 90,
+  "automationPotential": 71,
+  "humanReviewCoverage": 82,
+  "riskLevel": "medium",
+  "warnings": [
+    "Some nodes have medium confidence and should be clarified before implementation.",
+    "Adapter exports are draft-oriented in V0 and should be reviewed before importing into n8n, Dify, or LangGraph."
+  ],
+  "recommendedNextQuestions": [
+    "Which systems hold the input data for each step?",
+    "Who owns the final approval for high-risk outputs?",
+    "What metric proves that this workflow improved the business process?"
+  ]
+}

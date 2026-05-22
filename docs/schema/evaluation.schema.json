@@ -1,0 +1,61 @@
+{
+  "$ref": "#/definitions/EvaluationSpec",
+  "definitions": {
+    "EvaluationSpec": {
+      "type": "object",
+      "properties": {
+        "coverageScore": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "ambiguityScore": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "automationPotential": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "humanReviewCoverage": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "riskLevel": {
+          "type": "string",
+          "enum": [
+            "low",
+            "medium",
+            "high"
+          ]
+        },
+        "warnings": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "recommendedNextQuestions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "coverageScore",
+        "ambiguityScore",
+        "automationPotential",
+        "humanReviewCoverage",
+        "riskLevel",
+        "warnings",
+        "recommendedNextQuestions"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}
