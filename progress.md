@@ -31,6 +31,8 @@
   - 使用生产模式重新生成英文 / 中文 README 截图，移除开发模式标记
 - 复测通过：`pnpm lint`、`pnpm typecheck`、`pnpm test`、`pnpm build`
 - 浏览器验证：生产模式桌面截图、中英文语言切换、Mermaid 渲染、390px 移动端无横向溢出
+- 首次推送到 GitHub：`https://github.com/Dewensong/sop-to-agent`
+- 补回 GitHub Actions CI，自动执行 install / lint / typecheck / test / build
 
 ## 记录规则
 - 每次重要推进追加一条日期记录
