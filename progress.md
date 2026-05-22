@@ -33,6 +33,7 @@
 - 浏览器验证：生产模式桌面截图、中英文语言切换、Mermaid 渲染、390px 移动端无横向溢出
 - 首次推送到 GitHub：`https://github.com/Dewensong/sop-to-agent`
 - 补回 GitHub Actions CI，自动执行 install / lint / typecheck / test / build
+- 调整 GitHub 默认首页语言：`README.md` 改为中文主页，英文版迁移到 `README.en.md`，保留 `README.zh-CN.md` 作为兼容跳转入口
 
 ## 记录规则
 - 每次重要推进追加一条日期记录

@@ -1,58 +1,58 @@
 # SOPilot
 
-**Turn messy business SOPs into structured, reviewable, exportable AI agent workflow specs.**
+**把杂乱业务 SOP 转成结构化、可审查、可导出的 AI Agent 工作流规格。**
 
-[中文说明](README.zh-CN.md) · [Quick Start](#quick-start) · [Examples](#examples) · [Schema](docs/schema.md) · [Adapter Roadmap](docs/adapter-roadmap.md)
+[English README](README.en.md) · [快速开始](#快速开始) · [示例](#示例) · [Schema](docs/schema.md) · [Adapter Roadmap](docs/adapter-roadmap.md)
 
 ![MIT License](https://img.shields.io/badge/license-MIT-0f172a)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178c6)
-![No API key required](https://img.shields.io/badge/demo-no_API_key_required-16a34a)
-![Bilingual UI](https://img.shields.io/badge/UI-English_%2F_%E4%B8%AD%E6%96%87-0284c7)
+![无需 API Key](https://img.shields.io/badge/demo-%E6%97%A0%E9%9C%80_API_Key-16a34a)
+![中英文界面](https://img.shields.io/badge/UI-English_%2F_%E4%B8%AD%E6%96%87-0284c7)
 
-SOPilot is an open-source **SOP-to-Agent Workflow Generator**. Paste a SOP, meeting note, or business process and get a structured workflow draft your product, business, data, and engineering teams can review together.
+SOPilot 是一个开源的 **SOP-to-Agent Workflow Generator**。输入一段 SOP、会议纪要或业务流程说明，它会生成一份业务、产品、数据、技术团队都能共同评审的 Agent 工作流草案。
 
-> Not another AI copywriter. SOPilot sits before n8n, Dify, and LangGraph: it turns fuzzy business text into diffable workflow specs.
+> SOPilot 不是 AI 文案生成器。它站在 n8n、Dify、LangGraph 之前，把模糊业务文本转成可 diff、可审查、可导出的工作流规格。
 
-![SOPilot workbench](docs/assets/sopilot-workbench.png)
+![SOPilot 中文工作台](docs/assets/sopilot-workbench-zh.png)
 
 ## Before / After
 
 ```text
-Input:
+输入：
 "需求收集 -> 活动策划 -> 文案生成 -> 审核 -> 发布 -> 数据复盘"
 
-Output:
-- 6 structured SOP nodes
-- AI automation opportunity map
-- Agent / Tool / Human Review design
-- Human review gates
-- Mermaid workflow diagram
-- Exportable workflow.json, sop.json, evaluation.json, flow.mmd, report.md
+输出：
+- 6 个结构化 SOP 节点
+- AI 自动化机会分析
+- Agent / Tool / Human Review 设计
+- 人工审核节点
+- Mermaid 流程图
+- 可导出的 workflow.json、sop.json、evaluation.json、flow.mmd、report.md
 ```
 
-## What You Get
+## 你会得到什么
 
-- **Structured SOP JSON** for business process facts.
-- **Agent workflow spec** with Agent / Tool / Human Review / Manual nodes.
-- **Automation opportunity map** with feasibility, risk, and confidence scores.
-- **Human gates** for approvals, risky outputs, and external commitments.
-- **Mermaid diagram** generated from canonical workflow JSON.
-- **Markdown / JSON / Mermaid exports** for review, docs, and handoff.
-- **English / Chinese Web UI** for open-source discovery and Chinese interview demos.
+- **结构化 SOP JSON**：沉淀业务流程事实。
+- **Agent 工作流规格**：标注 Agent / Tool / Human Review / Manual 节点。
+- **AI 自动化机会图谱**：包含可行性、风险和置信度评分。
+- **人工审核点**：覆盖审批、高风险输出和外部承诺。
+- **Mermaid 流程图**：从标准 workflow JSON 生成。
+- **Markdown / JSON / Mermaid 导出**：用于评审、文档和交接。
+- **中英文 Web UI**：兼顾 GitHub 传播和中文面试演示。
 
-## Why It Exists
+## 为什么做 SOPilot
 
-AI workflow projects often fail before implementation: the business process is fuzzy, ownership is unclear, risky nodes are not reviewed, and generated workflows are hard to diff.
+很多 AI 工作流项目不是失败在代码，而是失败在实现之前：业务流程不清晰、责任人不明确、风险节点无人审核、生成的工作流不可 diff。
 
-SOPilot focuses on the upstream design layer:
+SOPilot 只聚焦上游设计层：
 
 ```text
-Business SOP -> Structured SOP -> AI opportunity map -> Agent workflow draft -> Human gates -> Exports
+业务 SOP -> 结构化 SOP -> AI 机会识别 -> Agent 工作流草案 -> 人工审核点 -> 导出
 ```
 
-It does not try to replace workflow platforms. It creates a clean, reviewable spec that can later be mapped to n8n, Dify, LangGraph, or internal automation systems.
+它不替代工作流平台，而是先生成一份干净、可审查的规格，后续可以映射到 n8n、Dify、LangGraph 或企业内部自动化系统。
 
-## Quick Start
+## 快速开始
 
 ```bash
 pnpm install
@@ -60,88 +60,88 @@ pnpm build
 pnpm dev
 ```
 
-Open the local web app and paste a SOP. The default demo path does **not** require an API key.
+打开本地 Web 应用，粘贴 SOP 即可体验。默认演示路径**不需要 API Key**。
 
-Run the CLI:
+运行 CLI：
 
 ```bash
 pnpm sopilot generate examples/marketing-campaign.md --format all --out output/
 ```
 
-List built-in templates:
+查看内置模板：
 
 ```bash
 pnpm sopilot templates
 ```
 
-Generate all example output bundles:
+生成所有示例输出：
 
 ```bash
 pnpm generate:examples
 ```
 
-## Outputs
+## 输出产物
 
-SOPilot exports canonical artifacts instead of raw LLM text:
+SOPilot 导出标准化产物，而不是直接保存原始 LLM 文本：
 
-| File | Purpose |
+| 文件 | 用途 |
 | --- | --- |
-| `sop.json` | Business process facts: actors, systems, nodes, edges, inputs, outputs |
-| `workflow.json` | Agent / Tool / Human Review / Manual workflow design |
-| `evaluation.json` | Coverage, ambiguity, automation potential, warnings, next questions |
-| `flow.mmd` | Mermaid workflow diagram |
-| `report.md` | Readable handoff for business, product, and engineering review |
+| `sop.json` | 业务流程事实：角色、系统、节点、连线、输入、输出 |
+| `workflow.json` | Agent / Tool / Human Review / Manual 节点设计 |
+| `evaluation.json` | 覆盖度、模糊度、自动化潜力、提醒和下一步问题 |
+| `flow.mmd` | Mermaid 流程图 |
+| `report.md` | 给业务、产品、技术团队共审的说明文档 |
 
-## Examples
+## 示例
 
-The repository includes 12 first-run SOP templates:
+仓库内置 12 个 SOP 模板：
 
-1. Marketing campaign workflow
-2. Content production pipeline
-3. Sales lead follow-up
-4. Customer interview analysis
-5. Meeting notes to tasks
-6. Competitor analysis
-7. Support ticket triage
-8. Recruiting resume screening
-9. Product requirement analysis
-10. Weekly data report
-11. User feedback clustering
-12. PRD review risk check
+1. 营销活动全流程
+2. 内容生产流水线
+3. 销售线索跟进
+4. 客户访谈分析
+5. 会议纪要转任务
+6. 竞品分析
+7. 客服工单分流
+8. 招聘简历筛选
+9. 产品需求分析
+10. 周报 / 数据报告生成
+11. 用户反馈聚类
+12. PRD 评审与风险检查
 
-See [docs/examples.md](docs/examples.md) for the example index and generated artifact map.
+详见 [docs/examples.md](docs/examples.md)。
 
-## For AI PM Interviews
+## 面试叙事
 
-SOPilot demonstrates the full AI product manager loop for marketing enablement:
+SOPilot 可以作为“AI 产品经理（营销提效）”作品，完整展示这条能力链路：
 
 ```text
-Business interview -> SOP structuring -> AI opportunity analysis -> Agent workflow design -> Human review -> IT/data handoff
+业务访谈 -> SOP 结构化 -> AI 机会识别 -> Agent 工作流设计 -> 人工审核 -> IT / 数据团队交接
 ```
 
-The marketing campaign example is the golden case, but the project is intentionally general enough for sales, support, recruiting, product, analytics, and operations workflows.
+营销活动流程是第一个黄金案例，但项目本身保持通用，可迁移到销售、客服、招聘、产品、数据分析和运营流程。
 
-## For Developers
+## 开发者视角
 
-SOPilot is designed to be easy to inspect, test, and extend:
+SOPilot 适合被收藏、研究和二次开发：
 
-- Shared `packages/core` for schemas, deterministic parser, evaluator, and exporters.
-- Web demo and CLI use the same canonical generation path.
-- Zod schemas keep outputs typed, validated, and diffable.
-- Adapter roadmap keeps n8n / Dify / LangGraph exports honest instead of promising runnable imports too early.
+- `packages/core` 统一承载 schema、deterministic parser、evaluator 和 exporter。
+- Web Demo 与 CLI 共用同一条 canonical generation path。
+- Zod schema 让输出可校验、可类型推导、可 diff。
+- adapter roadmap 明确 n8n / Dify / LangGraph 只做渐进扩展，不在 V0 过度承诺。
 
-## Monorepo Structure
+## 仓库结构
 
 ```text
 apps/web              # Next.js Web Demo
-packages/core         # Zod schemas, parser, evaluator, exporters
+packages/core         # Zod schema、parser、evaluator、exporters
 packages/cli          # sopilot generate
-examples              # Built-in SOP templates
-docs                  # Schema, examples, adapter roadmap
+examples              # 内置 SOP 模板
+docs                  # Schema、示例、adapter roadmap
 .github/workflows     # CI
 ```
 
-## Development
+## 开发验证
 
 ```bash
 pnpm lint
@@ -150,7 +150,7 @@ pnpm test
 pnpm build
 ```
 
-Generate JSON Schema files:
+生成 JSON Schema：
 
 ```bash
 pnpm schema
@@ -158,22 +158,22 @@ pnpm schema
 
 ## Roadmap
 
-- V0: schema, Web demo, CLI, examples, JSON / Markdown / Mermaid export.
-- V0.2: LangGraph draft exporter.
-- V0.3: experimental n8n JSON for common nodes.
-- V0.4: Dify workflow draft after format stability review.
+- V0：schema、Web demo、CLI、examples、JSON / Markdown / Mermaid 导出。
+- V0.2：LangGraph draft exporter。
+- V0.3：experimental n8n JSON，优先支持常见节点。
+- V0.4：等 Dify workflow 格式稳定后再做草案导出。
 
-See [docs/adapter-roadmap.md](docs/adapter-roadmap.md).
+详见 [docs/adapter-roadmap.md](docs/adapter-roadmap.md)。
 
-## What V0 Does Not Do
+## V0 不做什么
 
-- No user accounts
-- No database
-- No enterprise workflow execution engine
-- No visual workflow canvas
-- No production-ready n8n / Dify / LangGraph import yet
+- 不做用户账号
+- 不上数据库
+- 不做企业级工作流执行引擎
+- 不做复杂画布编辑器
+- 不承诺 n8n / Dify / LangGraph 的生产可运行导入
 
-V0 stays focused on structure, automation opportunities, human gates, and exports.
+V0 聚焦上游设计层：结构化、自动化机会、人工审核和导出。
 
 ## License
 
