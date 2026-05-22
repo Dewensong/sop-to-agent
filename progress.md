@@ -27,13 +27,14 @@
 - 根据反馈将产品 UI 回退为白色简约工作台：
   - 保留中英文切换、GitHub 链接、CLI 提示、示例库和导出闭环
   - 将“花哨好看”的重点转移到 GitHub README 首页叙事
-  - 重写英文 / 中文 README 首屏：定位、截图、Before / After、面试叙事、开发者叙事、路线图
+  - 重写英文 / 中文 README 首屏：定位、截图、Before / After、设计原则、路线图
   - 使用生产模式重新生成英文 / 中文 README 截图，移除开发模式标记
 - 复测通过：`pnpm lint`、`pnpm typecheck`、`pnpm test`、`pnpm build`
 - 浏览器验证：生产模式桌面截图、中英文语言切换、Mermaid 渲染、390px 移动端无横向溢出
 - 首次推送到 GitHub：`https://github.com/Dewensong/sop-to-agent`
 - 补回 GitHub Actions CI，自动执行 install / lint / typecheck / test / build
 - 调整 GitHub 默认首页语言：`README.md` 改为中文主页，英文版迁移到 `README.en.md`，保留 `README.zh-CN.md` 作为兼容跳转入口
+- 清理 README 和公开文档里的内部包装表达，保持 GitHub 首页为通用开源项目叙事
 
 ## 记录规则
 - 每次重要推进追加一条日期记录

@@ -38,7 +38,7 @@ Output:
 - **Human gates** for approvals, risky outputs, and external commitments.
 - **Mermaid diagram** generated from canonical workflow JSON.
 - **Markdown / JSON / Mermaid exports** for review, docs, and handoff.
-- **English / Chinese Web UI** for open-source discovery and Chinese interview demos.
+- **English / Chinese Web UI** for multilingual demos and usage.
 
 ## Why It Exists
 
@@ -111,19 +111,9 @@ The repository includes 12 first-run SOP templates:
 
 See [docs/examples.md](docs/examples.md) for the example index and generated artifact map.
 
-## For AI PM Interviews
+## Design Principles
 
-SOPilot demonstrates the full AI product manager loop for marketing enablement:
-
-```text
-Business interview -> SOP structuring -> AI opportunity analysis -> Agent workflow design -> Human review -> IT/data handoff
-```
-
-The marketing campaign example is the golden case, but the project is intentionally general enough for sales, support, recruiting, product, analytics, and operations workflows.
-
-## For Developers
-
-SOPilot is designed to be easy to inspect, test, and extend:
+SOPilot is designed to stay lightweight, reviewable, and extensible:
 
 - Shared `packages/core` for schemas, deterministic parser, evaluator, and exporters.
 - Web demo and CLI use the same canonical generation path.

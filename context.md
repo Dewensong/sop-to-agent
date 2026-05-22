@@ -26,8 +26,8 @@ SOPilot 是一个开源工具，目标是把业务 SOP、会议纪要、流程�
 - 时间：优先做可运行 V0，不扩成大而全平台。
 - 资源：默认无真实 LLM API Key 也要能跑通演示。
 - 技术：TypeScript monorepo，Next.js Web Demo，CLI，共享 core。
-- 协作：项目既服务 AI 产品经理（营销提效）面试，也面向 GitHub 开源传播。
-- 语言：Web Demo 支持 English / 中文切换，兼顾 GitHub 传播和中文面试展示。
+- 协作：项目面向 GitHub 开源传播，同时保持业务流程 AI 化的真实场景价值。
+- 语言：Web Demo 支持 English / 中文切换，兼顾国际开源传播和中文用户体验。
 
 ## 验收标准
 

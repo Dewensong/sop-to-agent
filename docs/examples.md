@@ -13,7 +13,7 @@ pnpm generate:examples
 
 | Example | Domain | Why it matters |
 | --- | --- | --- |
-| `marketing-campaign.md` | Marketing | The interview-facing flagship case for marketing productivity. |
+| `marketing-campaign.md` | Marketing | A flagship case for campaign planning and review workflows. |
 | `content-pipeline.md` | Content | Shows recurring creative workflows without becoming a copywriter app. |
 | `sales-lead-followup.md` | Sales | Highlights lead scoring, routing, and sales guardrails. |
 | `customer-interview-analysis.md` | Research | Shows evidence retention and human interpretation. |

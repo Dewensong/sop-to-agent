@@ -38,7 +38,7 @@ SOPilot 是一个开源的 **SOP-to-Agent Workflow Generator**。输入一段 SO
 - **人工审核点**：覆盖审批、高风险输出和外部承诺。
 - **Mermaid 流程图**：从标准 workflow JSON 生成。
 - **Markdown / JSON / Mermaid 导出**：用于评审、文档和交接。
-- **中英文 Web UI**：兼顾 GitHub 传播和中文面试演示。
+- **中英文 Web UI**：方便不同语言环境下演示和使用。
 
 ## 为什么做 SOPilot
 
@@ -111,19 +111,9 @@ SOPilot 导出标准化产物，而不是直接保存原始 LLM 文本：
 
 详见 [docs/examples.md](docs/examples.md)。
 
-## 面试叙事
+## 设计原则
 
-SOPilot 可以作为“AI 产品经理（营销提效）”作品，完整展示这条能力链路：
-
-```text
-业务访谈 -> SOP 结构化 -> AI 机会识别 -> Agent 工作流设计 -> 人工审核 -> IT / 数据团队交接
-```
-
-营销活动流程是第一个黄金案例，但项目本身保持通用，可迁移到销售、客服、招聘、产品、数据分析和运营流程。
-
-## 开发者视角
-
-SOPilot 适合被收藏、研究和二次开发：
+SOPilot 保持轻量、可审查、可扩展：
 
 - `packages/core` 统一承载 schema、deterministic parser、evaluator 和 exporter。
 - Web Demo 与 CLI 共用同一条 canonical generation path。
